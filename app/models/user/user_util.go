@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"gohub/pkg/database"
 )
 
@@ -15,5 +16,8 @@ func IsEmailExist(email string) bool {
 func IsPhoneExist(phone string) bool {
 	var count int64
 	database.DB.Model(User{}).Where("phone = ?", phone).Count(&count)
+	fmt.Println("=================")
+	fmt.Println(count)
+	fmt.Println("=================")
 	return count > 0
 }
